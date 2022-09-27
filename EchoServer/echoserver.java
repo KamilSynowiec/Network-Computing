@@ -43,5 +43,18 @@ public class echoserver
       System.err.println("Server socket failed");
       System.exit(1);
     }
+    
+    //connect the input and the output to and from the socket
+    PrintWriter echoOutput = new PrintWriter(clientSocket.getOutputStream(), true);
+    BufferedReader echoInput=new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+    
+    String inputLine, outputLine;
+    
+    while((inputLine=echoInput.readLine())!=null)
+    {
+      outputLine=inputLine;
+      
+      echoOutput.println(outputLine);
+    }
   }
 }

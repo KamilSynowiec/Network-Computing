@@ -32,5 +32,16 @@ public class echoserver
     }
     
     System.out.println("Echo server up and waiting");
+    
+    Socket clientSocket=null;
+    try
+    {
+      clientSocket=serverSocket.accept(); //listen for incoming TCP requests
+    }
+    catch(IOException e)
+    {
+      System.err.println("Server socket failed");
+      System.exit(1);
+    }
   }
 }
